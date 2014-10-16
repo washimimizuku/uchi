@@ -24,8 +24,3 @@ class Section(models.Model):
 
     class Meta:
         ordering = ('-pub_date',)
-
-
-class Tag(models.Model):
-    name      = models.CharField(max_length=100)
-    pages     = models.ManyToManyField('Page')
