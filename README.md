@@ -1,4 +1,15 @@
-uchi-python
-===========
+# uchi
 
 Just a basic webiste framework
+
+## Launch
+
+```
+python manage.py runserver
+```
+
+## Migrations
+
+```
+python manage.py migrate
+```
