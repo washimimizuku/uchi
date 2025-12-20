@@ -1,43 +1,82 @@
-# Astro Starter Kit: Minimal
+# Uchi - Website Generator
 
-```sh
-npm create astro@latest -- --template minimal
+A modern, config-driven website generator that creates complete websites with both frontend and backend from a simple configuration file.
+
+## Objective
+
+Uchi generates custom websites including:
+- **Homepage** - Landing page with customizable sections
+- **Static Pages** - About, Contact, Services, etc.
+- **Blog System** - Full blog with posts, categories, and pagination
+- **Admin Interface** - Content management system
+
+All generated from a single configuration file that defines your site structure, content types, and styling preferences.
+
+## Philosophy
+
+- **Config-driven**: Define your entire site structure in one file
+- **Zero-code**: Generate complete websites without writing code
+- **Modern stack**: Built with Astro for performance and developer experience
+- **Flexible**: Support for various content types and layouts
+- **Fast**: Static generation for optimal performance
+
+## Features
+
+- 🚀 **Static Site Generation** - Fast, secure, and SEO-friendly
+- 📝 **Content Management** - Built-in admin for easy content editing
+- 🎨 **Customizable Themes** - Multiple design options
+- 📱 **Responsive Design** - Mobile-first approach
+- 🔍 **SEO Optimized** - Meta tags, sitemaps, and structured data
+- 📊 **Analytics Ready** - Easy integration with tracking tools
+
+## Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Configure your site
+cp config.example.json config.json
+# Edit config.json with your site details
+
+# Generate your website
+npm run generate
+
+# Start development server
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Configuration
 
-## 🚀 Project Structure
+Your entire website is defined in `config.json`:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```json
+{
+  "site": {
+    "name": "My Website",
+    "url": "https://mysite.com",
+    "description": "A beautiful website"
+  },
+  "pages": [
+    { "slug": "about", "title": "About Us", "template": "page" },
+    { "slug": "contact", "title": "Contact", "template": "contact" }
+  ],
+  "blog": {
+    "enabled": true,
+    "postsPerPage": 10
+  },
+  "theme": "modern"
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Status
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+🚧 **Work in Progress** - This is a proof of concept resurrection of the original Uchi project, updated for modern web development practices.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Legacy
 
-## 🧞 Commands
+This project is the spiritual successor to:
+- [Apoidea](https://github.com/washimimizuku/apoidea) - Admin-only generator
+- [Original Uchi](https://github.com/washimimizuku/uchi) - Django-based website generator
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Built with modern tools while maintaining the simplicity and power of the original vision.

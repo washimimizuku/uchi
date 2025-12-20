@@ -1,16 +1,89 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { loadConfig } from '../lib/config';
 
+const config = loadConfig();
+const blogPosts = await getCollection('blog');
+const latestPosts = blogPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={config.site.name}>
+  <main>
+    <section class="hero">
+      <h1>{config.site.name}</h1>
+      <p>{config.site.description}</p>
+    </section>
+
+    {config.blog.enabled && (
+      <section class="recent-posts">
+        <h2>Latest Posts</h2>
+        <div class="posts-grid">
+          {latestPosts.map((post) => (
+            <article class="post-card">
+              <h3><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+              <p>{post.data.description}</p>
+              <time>{post.data.publishDate.toLocaleDateString()}</time>
+            </article>
+          ))}
+        </div>
+        <a href="/blog" class="view-all">View All Posts →</a>
+      </section>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color, #3b82f6), var(--secondary-color, #64748b));
+    color: white;
+    margin-bottom: 3rem;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .recent-posts {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .post-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .post-card h3 a {
+    color: var(--primary-color, #3b82f6);
+    text-decoration: none;
+  }
+  
+  .view-all {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--primary-color, #3b82f6);
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>

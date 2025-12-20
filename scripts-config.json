@@ -1,19 +1,10 @@
 {
-  "name": "uchi",
-  "type": "module",
-  "version": "0.0.1",
   "scripts": {
-    "generate": "tsx scripts/generate.js",
+    "generate": "node scripts/generate.js",
     "dev": "npm run generate && astro dev",
     "start": "astro dev",
     "build": "npm run generate && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^5.16.6"
-  },
-  "devDependencies": {
-    "tsx": "^4.21.0"
   }
 }
