@@ -77,6 +77,6 @@ Your entire website is defined in `config.json`:
 
 This project is the spiritual successor to:
 - [Apoidea](https://github.com/washimimizuku/apoidea) - Admin-only generator
-- [Original Uchi](https://github.com/washimimizuku/uchi) - Django-based website generator
+- Original Uchi - Django-based website generator
 
 Built with modern tools while maintaining the simplicity and power of the original vision.
