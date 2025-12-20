@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "generate": "node scripts/generate.js",
+    "dev": "npm run generate && astro dev",
+    "start": "astro dev",
+    "build": "npm run generate && astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  }
+}
